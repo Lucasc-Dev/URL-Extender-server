@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
+import urlsRouter from './urls.routes';
+
 const router = Router();
 
-router.get('', (request, response) => {
-    return response.json({ working: true });
-});
+router.use('/urls', urlsRouter);
 
 export default router;
