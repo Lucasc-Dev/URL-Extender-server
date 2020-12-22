@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import AppError from "../errors/AppError";
 
 import Url from "../models/Url";
 
@@ -20,7 +21,7 @@ export default class CreateUrlService {
         const findUrl = await this.urlsRepository.findBySlug(slug);
 
         if (findUrl) {
-            throw new Error('URL already exists.');
+            throw new AppError('URL already exists.');
         }
 
         const url = await this.urlsRepository.create({ original_url, slug });

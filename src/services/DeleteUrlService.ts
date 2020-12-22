@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import AppError from "../errors/AppError";
 
 import IUrlsRepository from "../repositories/models/IUrlsRepository";
 
@@ -17,7 +18,7 @@ export default class DeleteUrlService {
         const url = await this.urlsRepository.findBySlug(slug);
 
         if (!url) {
-            throw new Error('URL not found');
+            throw new AppError('URL not found');
         }
 
         await this.urlsRepository.delete(url.id);
