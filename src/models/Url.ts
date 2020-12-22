@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity('url')
+@Entity('urls')
 export default class Url {
     @PrimaryGeneratedColumn('uuid')
     id: string;
