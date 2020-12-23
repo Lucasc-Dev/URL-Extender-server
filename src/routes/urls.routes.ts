@@ -6,7 +6,8 @@ const router = Router();
 
 const urlsController = new UrlsController();
 
-router.post('/', urlsController.create);
-router.delete('/:slug', urlsController.delete);
+router.get('/:slug', urlsController.show);
+router.post('/urls', urlsController.create);
+router.delete('/urls/:slug', urlsController.delete);
 
 export default router;

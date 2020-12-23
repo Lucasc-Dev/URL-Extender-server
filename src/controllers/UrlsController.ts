@@ -2,8 +2,21 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import CreateUrlService from "../services/CreateUrlService";
 import DeleteUrlService from "../services/DeleteUrlService";
+import FindUrlService from "../services/FindUrlService";
 
 export default class UrlsController {
+    public async show(request: Request, response: Response): Promise<Response> {
+        const { slug } = request.params;
+
+        const findUrl = container.resolve(FindUrlService);
+
+        const url = await findUrl.execute({ slug });
+
+        response.redirect(url);
+
+        return response.status(200);
+    }
+
     public async create(request: Request, response: Response): Promise<Response> {
         const { original_url, slug } = request.body;
 

@@ -4,6 +4,6 @@ import urlsRouter from './urls.routes';
 
 const router = Router();
 
-router.use('/urls', urlsRouter);
+router.use('/', urlsRouter);
 
 export default router;
