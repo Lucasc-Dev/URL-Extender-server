@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
+import { classToClass } from "class-transformer";
 import { container } from "tsyringe";
+
 import CreateUrlService from "../services/CreateUrlService";
 import DeleteUrlService from "../services/DeleteUrlService";
 import FindUrlService from "../services/FindUrlService";
@@ -24,7 +26,7 @@ export default class UrlsController {
 
         const url = await createUrl.execute({ original_url, slug });
 
-        return response.json(url);
+        return response.json(classToClass(url));
     }
 
     public async delete(request: Request, response: Response): Promise<Response> {
