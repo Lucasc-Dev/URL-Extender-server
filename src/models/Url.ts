@@ -1,4 +1,7 @@
+import { Expose } from "class-transformer";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+
+import urlConfig from '../configs/url';
 
 @Entity('urls')
 export default class Url {
@@ -16,4 +19,9 @@ export default class Url {
 
     @CreateDateColumn()
     created_at: Date;
+
+    @Expose({ name: 'custom_url' })
+    get_custom_url(): string {
+        return `${urlConfig.page_url}${this.slug}`;
+    }
 }
